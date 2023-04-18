@@ -1,6 +1,6 @@
 <template>
   <el-dialog
-    class="pro-dialog"
+    class="el-pro-dialog"
     v-bind="{ ...dialogProps }"
     :show-close="false"
     :model-value="modelValue"
@@ -9,7 +9,7 @@
   >
     <template v-if="withHeader" #header>
       <slot v-if="$slots.header" name="header" />
-      <h5 v-else class="pro-dialog-title">
+      <h5 v-else class="el-pro-dialog-title">
         {{ title }}
       </h5>
       <button

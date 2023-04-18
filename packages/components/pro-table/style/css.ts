@@ -1,5 +1,5 @@
 import '@element-plus/components/base/style/css'
-import '@element-plus/theme-chalk/pro-table.css'
+import '@element-plus/theme-chalk/el-pro-table.css'
 import '@element-plus/components/form/style/css'
 import '@element-plus/components/input/style/css'
 import '@element-plus/components/input-number/style/css'
