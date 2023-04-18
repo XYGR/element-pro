@@ -102,6 +102,10 @@ import { ElTree } from '@element-plus/components/tree'
 import { ElTreeSelect } from '@element-plus/components/tree-select'
 import { ElTreeV2 } from '@element-plus/components/tree-v2'
 import { ElUpload } from '@element-plus/components/upload'
+import { ElProDialog } from '@element-plus/components/pro-dialog'
+import { ElProDialogForm } from '@element-plus/components/pro-dialog-form'
+import { ElProTable } from '@element-plus/components/pro-table'
+import { ElProCrud } from '@element-plus/components/pro-crud'
 
 import type { Plugin } from 'vue'
 
@@ -204,4 +208,8 @@ export default [
   ElTreeSelect,
   ElTreeV2,
   ElUpload,
+  ElProDialog,
+  ElProDialogForm,
+  ElProTable,
+  ElProCrud,
 ] as Plugin[]

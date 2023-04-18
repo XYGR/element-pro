@@ -28,6 +28,7 @@ NAME=$NORMALIZED_NAME
 
 mkdir -p "$DIRNAME"
 mkdir -p "$DIRNAME/src"
+mkdir -p "$DIRNAME/style"
 mkdir -p "$DIRNAME/__tests__"
 
 cat > $DIRNAME/src/$INPUT_NAME.vue <<EOF
@@ -60,6 +61,10 @@ export const ${INPUT_NAME}Props = buildProps({})
 
 export type ${NAME}Props = ExtractPropTypes<typeof ${INPUT_NAME}Props>
 export type ${NAME}Instance = InstanceType<typeof $NAME>
+EOF
+
+cat > $DIRNAME/style/index.ts <<EOF
+import '@element-plus/components/base/style'
 EOF
 
 cat <<EOF >"$DIRNAME/index.ts"
