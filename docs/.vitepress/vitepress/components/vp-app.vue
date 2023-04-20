@@ -1,12 +1,9 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { ElMessageBox } from 'element-plus'
 import nprogress from 'nprogress'
-import dayjs from 'dayjs'
 import { isClient, useEventListener, useStorage, useToggle } from '@vueuse/core'
 import { useSidebar } from '../composables/sidebar'
 import { useToggleWidgets } from '../composables/toggle-widgets'
-import { useLang } from '../composables/lang'
 import { breakpoints } from '../constant'
 import VPOverlay from './vp-overlay.vue'
 import VPSkipLink from './vp-skip-link.vue'
@@ -16,16 +13,8 @@ import VPSidebar from './vp-sidebar.vue'
 import VPContent from './vp-content.vue'
 import VPSponsors from './vp-sponsors.vue'
 
-const USER_PREFER_GITHUB_PAGE = 'USER_PREFER_GITHUB_PAGE'
 const [isSidebarOpen, toggleSidebar] = useToggle(false)
 const { hasSidebar } = useSidebar()
-const lang = useLang()
-
-const mirrorUrl = 'element-plus.gitee.io'
-const isMirrorUrl = () => {
-  if (!isClient) return
-  return window.location.hostname === mirrorUrl
-}
 
 useToggleWidgets(isSidebarOpen, () => {
   if (!isClient) return
@@ -41,8 +30,6 @@ useEventListener('keydown', (e) => {
     document.querySelector<HTMLButtonElement>('.sidebar-button')?.focus()
   }
 })
-
-const userPrefer = useStorage<boolean | string>(USER_PREFER_GITHUB_PAGE, null)
 
 onMounted(async () => {
   if (!isClient) return
