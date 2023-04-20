@@ -14,6 +14,10 @@ export const proDialogFormProps = buildProps({
     type: Boolean,
     default: true,
   },
+  title: {
+    type: String,
+    default: 'ProDialogForm',
+  },
   formModel: {
     type: definePropType<Record<string, any>>(Object),
     default: undefined,

@@ -1,2 +1,5 @@
 import '@element-plus/components/base/style'
+import '@element-plus/theme-chalk/src/pro-dialog-form.scss'
+import '@element-plus/components/form/style'
+import '@element-plus/components/button/style'
 import '@element-plus/components/pro-dialog/style'

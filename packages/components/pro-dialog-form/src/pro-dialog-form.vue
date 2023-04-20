@@ -1,7 +1,9 @@
 <template>
   <el-pro-dialog
+    class="el-pro-dialog-form"
     v-bind="{ ...proDialogProps }"
     :model-value="modelValue"
+    :title="title"
     @update:model-value="(val) => $emit('update:modelValue', val)"
     @opened="$emit('opened')"
     @closed="handlerClosed"
@@ -17,7 +19,6 @@
       :size="size"
     >
       <slot name="form" :model="formModel" />
-      <button v-if="$attrs['onOpened']">Opened</button>
     </el-form>
     <template #footer>
       <slot v-if="$slots.footer" name="header" />

@@ -46,6 +46,7 @@
       v-model="formVisible"
       :form-model="formModel"
       :form-rules="writeRules"
+      :label-width="writeLabelWidth"
       :submit="beforeRequest"
       :title="formMethod === 'create' ? '新增' : '编辑'"
       @closed="handlerClosed"
