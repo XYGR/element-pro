@@ -1,5 +1,6 @@
 <template>
   <el-pro-dialog
+    v-bind="{ ...proDialogProps }"
     :model-value="modelValue"
     @update:model-value="(val) => $emit('update:modelValue', val)"
     @opened="$emit('opened')"

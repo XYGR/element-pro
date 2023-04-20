@@ -2,6 +2,7 @@ import { buildProps, definePropType, isBoolean } from '@element-plus/utils'
 import type { ExtractPropTypes } from 'vue'
 import type { FormRules } from '@element-plus/components/form'
 import type ProDialogForm from './pro-dialog-form.vue'
+import type { ProDialogProps } from '@element-plus/components/pro-dialog'
 
 export type ProDialogFormSubmitFn = (params: any) => Promise<{
   success: boolean
@@ -40,6 +41,10 @@ export const proDialogFormProps = buildProps({
   submit: {
     type: definePropType<ProDialogFormSubmitFn>(Function),
     default: undefined,
+  },
+  proDialogProps: {
+    type: definePropType<ProDialogProps | Record<string, any>>(Object),
+    required: false,
   },
 })
 

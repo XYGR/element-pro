@@ -4,6 +4,7 @@ import type {
   ProTableProps,
 } from '@element-plus/components/pro-table'
 import type { FormRules } from '@element-plus/components/form'
+import type { ProDialogFormProps } from '@element-plus/components/pro-dialog-form'
 import type { ExtractPropTypes } from 'vue'
 import type ProCrud from './pro-crud.vue'
 
@@ -63,6 +64,10 @@ export const proCrudProps = buildProps({
     type: definePropType<FormRules>(Object),
     default: undefined,
   },
+  writeLabelWidth: {
+    type: String,
+    default: '100px',
+  },
   createRequest: {
     type: Function,
     default: undefined,
@@ -81,6 +86,9 @@ export const proCrudProps = buildProps({
   },
   proTableProps: {
     type: definePropType<ProTableProps>(Object),
+  },
+  proDialogFormProps: {
+    type: definePropType<ProDialogFormProps>(Object),
   },
 })
 

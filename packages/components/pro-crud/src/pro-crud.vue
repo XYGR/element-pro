@@ -42,6 +42,7 @@
       </template>
     </el-pro-table>
     <el-pro-dialog-form
+      v-bind="{ ...proDialogFormProps }"
       v-model="formVisible"
       :form-model="formModel"
       :form-rules="writeRules"

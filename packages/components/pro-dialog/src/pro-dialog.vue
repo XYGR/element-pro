@@ -1,8 +1,9 @@
 <template>
   <el-dialog
     class="el-pro-dialog"
-    v-bind="{ ...dialogProps }"
     :show-close="false"
+    :close-on-click-modal="false"
+    v-bind="{ ...dialogProps }"
     :model-value="modelValue"
     @opened="$emit('opened')"
     @closed="$emit('closed')"
