@@ -1,5 +1,8 @@
 import { buildProps, definePropType, isBoolean } from '@element-plus/utils'
-import type { DialogProps } from '@element-plus/components/dialog'
+import type {
+  DialogBeforeCloseFn,
+  DialogProps,
+} from '@element-plus/components/dialog'
 
 import type { ExtractPropTypes } from 'vue'
 
@@ -23,6 +26,9 @@ export const proDialogProps = buildProps({
   showClose: {
     type: Boolean,
     default: true,
+  },
+  beforeClose: {
+    type: definePropType<DialogBeforeCloseFn>(Function),
   },
   dialogProps: {
     type: definePropType<DialogProps | Record<string, any>>(Object),

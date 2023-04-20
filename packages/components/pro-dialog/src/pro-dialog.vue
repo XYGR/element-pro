@@ -1,12 +1,16 @@
 <template>
   <el-dialog
     class="el-pro-dialog"
+    :class="{
+      'el-pro-dialog--without-header': !withHeader,
+    }"
     :show-close="false"
     :close-on-click-modal="false"
     v-bind="{ ...dialogProps }"
     :model-value="modelValue"
     @opened="$emit('opened')"
     @closed="$emit('closed')"
+    @before-close="beforeClose"
   >
     <template v-if="withHeader" #header>
       <slot v-if="$slots.header" name="header" />
@@ -37,6 +41,8 @@ import { ElDialog } from '@element-plus/components/dialog'
 import { ElIcon } from '@element-plus/components/icon'
 import { proDialogEmits, proDialogProps } from './pro-dialog'
 
+type DoneFn = (cancel?: boolean) => void
+
 export default defineComponent({
   name: 'ElProDialog',
   components: {
@@ -51,8 +57,17 @@ export default defineComponent({
       emit('update:modelValue', false)
     }
 
+    const beforeClose = (done: DoneFn) => {
+      if (typeof props.beforeClose === 'function') {
+        props.beforeClose(done)
+      } else {
+        done()
+      }
+    }
+
     return {
       handlerClosed,
+      beforeClose,
     }
   },
 })
