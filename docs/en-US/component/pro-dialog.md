@@ -1,6 +1,6 @@
 ---
 title: ProDialog 弹出框
-lang: zh-CN
+lang: en-US
 ---
 
 # ProDialog 弹出框
@@ -9,7 +9,7 @@ lang: zh-CN
 
 ## 基础用法
 
-Dialog 弹出一个对话框，适合需要定制性更大的场景。
+ProDialog 弹出一个对话框，适合需要定制性更大的场景。
 
 :::demo 需要设置 `model-value / v-model` 属性，它接收 `Boolean`，当为 `true` 时显示 ProDialog。 ProDialog 分为三个部分：`header`、`body` 和 `footer`，`header` 需要具名为 `header` 的 `slot`，`footer` 需要具名为 `footer` 的 `slot`。 `title` 属性用于定义标题，它是可选的，默认值为 ProDialog。
 
