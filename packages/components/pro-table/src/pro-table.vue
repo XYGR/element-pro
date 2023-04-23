@@ -30,7 +30,7 @@
                 :placeholder="item.placeholder ?? '请输入'"
               />
               <el-select
-                v-else-if="item.valueType === 'enmu'"
+                v-else-if="item.valueType === 'enum'"
                 v-model="model[item.dataIndex]"
                 :clearable="true"
                 :filterable="true"
@@ -172,7 +172,7 @@
             v-if="$slots['column-' + item.dataIndex]"
             :label="item.title"
             :width="item.width"
-            :min-width="item.minWidth"
+            :min-width="item.dataIndex === 'optional' ? 120 : item.minWidth"
             :prop="item.dataIndex"
             :align="item.align"
             show-overflow-tooltip
@@ -183,12 +183,12 @@
                 :name="'column-' + item.dataIndex"
                 :row="row"
                 :column="column"
-                :row-index="$index"
+                :[$index]="$index"
               />
             </template>
           </el-table-column>
           <el-table-column
-            v-else-if="item.valueType == 'enmu'"
+            v-else-if="item.valueType == 'enum'"
             :label="item.title"
             :width="item.width"
             :min-width="item.minWidth"
@@ -222,7 +222,6 @@
         </template>
         <slot name="custom" />
       </el-table>
-      <slot name="customTable" />
       <el-pagination
         v-model:page-size="pagination.pageSize"
         v-model:current-page="pagination.current"

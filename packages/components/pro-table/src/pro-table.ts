@@ -1,5 +1,6 @@
 import { buildProps, definePropType } from '@element-plus/utils'
 import type { ExtractPropTypes } from 'vue'
+import type { FormProps } from '@element-plus/components/form'
 import type { TableProps } from '@element-plus/components/table'
 import type ProTable from './pro-table.vue'
 
@@ -9,7 +10,7 @@ export type ProTableColumn = {
   valueType:
     | 'string'
     | 'number'
-    | 'enmu'
+    | 'enum'
     | 'date'
     | 'daterange'
     | 'datetime'
@@ -25,7 +26,11 @@ export type ProTableColumn = {
   fixed?: string
 }
 
-export type ProTableRequestFn = (params: any) => Promise<any>
+export type ProTableRequestFn = (
+  params: any
+) =>
+  | Promise<any>
+  | { data: any[]; total: number; current: number; pageSize: number }
 export type ProTableSelectionChangeFn = (rows: Array<any>) => void
 
 export const proTableProps = buildProps({
@@ -66,13 +71,17 @@ export const proTableProps = buildProps({
     type: definePropType<'small' | 'default' | 'large'>(String),
     default: 'default',
   },
+  formProps: {
+    type: definePropType<FormProps | Record<string, any>>(Object),
+    required: false,
+  },
   tableProps: {
-    type: definePropType<TableProps<any>>(Object),
+    type: definePropType<TableProps<any> | Record<string, any>>(Object),
     required: false,
   },
 })
 export const proTableEmits = {
-  reset: (): void => undefined,
+  reset: () => true,
   'row-click': (row: any, column: any, event: any): boolean =>
     event instanceof MouseEvent,
 }

@@ -1,5 +1,5 @@
 .el-pro-table {
-	background-color: #fff;
+	background-color: var(--el-bg-color);
 
 	.el-pro-table-form {
 		padding: 10px 24px;
@@ -18,7 +18,7 @@
 
 	.el-pro-table-body {
 		padding: 10px 24px 0;
-		border-top: 1px solid #F2F3F4;
+		border-top: 1px solid var(--el-border-color);
 	}
 }
 
@@ -37,7 +37,7 @@
 			cursor: pointer;
 
 			&:hover {
-				color: #409EFF;
+				color: var(--el-color-primary);
 			}
 
 			&.size-small {
@@ -63,7 +63,7 @@
 
 .toolbar-right-dropdown {
 	.el-dropdown-menu__item.is-active {
-		background-color: #ecf5ff;
-		color: #409eff;
+		background-color: var(--el-color-primary);
+		color: var(--el-color);
 	}
 }

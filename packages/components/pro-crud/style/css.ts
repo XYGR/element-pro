@@ -1,5 +1,4 @@
 import '@element-plus/components/base/style/css'
-import '@element-plus/theme-chalk/el-pro-crud.css'
 import '@element-plus/components/button/style/css'
 import '@element-plus/components/input/style/css'
 import '@element-plus/components/input-number/style/css'

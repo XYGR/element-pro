@@ -42,13 +42,13 @@
       </template>
     </el-pro-table>
     <el-pro-dialog-form
-      v-bind="{ ...proDialogFormProps }"
       v-model="formVisible"
       :form-model="formModel"
       :form-rules="writeRules"
       :label-width="writeLabelWidth"
       :submit="beforeRequest"
       :title="formMethod === 'create' ? '新增' : '编辑'"
+      v-bind="{ ...proDialogFormProps }"
       @closed="handlerClosed"
     >
       <template #form="{ model }">
@@ -176,7 +176,7 @@ export default defineComponent({
         column.push({
           title: '操作',
           dataIndex: 'optional',
-          valueType: 'string',
+          valueType: 'slot',
         })
       }
       return column
@@ -192,18 +192,18 @@ export default defineComponent({
       }
     }
 
-    const beforeRequest = (params: any) => {
+    const beforeRequest = () => {
       if (
         formMethod.value === 'create' &&
         typeof props.createRequest === 'function'
       ) {
-        return props.createRequest({ ...params, ...props.extParams })
+        return props.createRequest({ ...formModel, ...props.extParams })
       }
       if (
         formMethod.value === 'update' &&
         typeof props.updateRequest === 'function'
       ) {
-        return props.updateRequest({ ...params, ...props.extParams })
+        return props.updateRequest({ ...formModel, ...props.extParams })
       }
     }
 

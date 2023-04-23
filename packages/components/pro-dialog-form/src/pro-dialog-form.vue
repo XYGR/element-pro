@@ -1,9 +1,9 @@
 <template>
   <el-pro-dialog
     class="el-pro-dialog-form"
-    v-bind="{ ...proDialogProps }"
     :model-value="modelValue"
     :title="title"
+    v-bind="{ ...proDialogProps }"
     @update:model-value="(val) => $emit('update:modelValue', val)"
     @opened="$emit('opened')"
     @closed="handlerClosed"
@@ -17,11 +17,12 @@
       :rules="formRules"
       :label-width="labelWidth"
       :size="size"
+      v-bind="{ ...formProps }"
     >
       <slot name="form" :model="formModel" />
     </el-form>
     <template #footer>
-      <slot v-if="$slots.footer" name="header" />
+      <slot v-if="$slots.footer" name="footer" />
       <div v-else class="el-dialog-form-footer">
         <el-button type="danger" plain :size="size" @click="handlerCancel">
           {{ cancelText }}
@@ -57,7 +58,7 @@ export default defineComponent({
   },
   props: proDialogFormProps,
   emits: proDialogFormEmits,
-  setup(props, { emit }) {
+  setup(props, { emit, expose }) {
     const formRef = ref<FormInstance>()
     const submitLoading = ref<boolean>(false)
 
@@ -71,12 +72,14 @@ export default defineComponent({
           submitLoading.value = true
           if (typeof props.submit === 'function') {
             try {
-              const { msg } = await props.submit(props.formModel)
-              ElMessage.success(msg)
+              const { msg } = await props.submit()
+              msg && ElMessage.success(msg)
               emit('update:modelValue', false)
             } catch {
               submitLoading.value = false
             }
+          } else {
+            emit('update:modelValue', false)
           }
           submitLoading.value = false
         }
@@ -87,7 +90,7 @@ export default defineComponent({
       emit('closed')
       formRef.value?.resetFields()
     }
-
+    expose({ formRef })
     return {
       formRef,
       submitLoading,

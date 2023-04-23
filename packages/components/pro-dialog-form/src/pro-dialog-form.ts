@@ -1,12 +1,12 @@
 import { buildProps, definePropType, isBoolean } from '@element-plus/utils'
 import type { ExtractPropTypes } from 'vue'
-import type { FormRules } from '@element-plus/components/form'
+import type { FormProps, FormRules } from '@element-plus/components/form'
 import type ProDialogForm from './pro-dialog-form.vue'
 import type { ProDialogProps } from '@element-plus/components/pro-dialog'
 
-export type ProDialogFormSubmitFn = (params: any) => Promise<{
-  success: boolean
-  msg: string
+export type ProDialogFormSubmitFn = () => Promise<{
+  success?: boolean
+  msg?: string
 }>
 
 export const proDialogFormProps = buildProps({
@@ -18,6 +18,10 @@ export const proDialogFormProps = buildProps({
     type: String,
     default: 'ProDialogForm',
   },
+  width: {
+    type: String,
+    default: '30%',
+  },
   formModel: {
     type: definePropType<Record<string, any>>(Object),
     default: undefined,
@@ -25,14 +29,6 @@ export const proDialogFormProps = buildProps({
   formRules: {
     type: definePropType<FormRules>(Object),
     default: undefined,
-  },
-  okText: {
-    type: String,
-    default: '确认',
-  },
-  cancelText: {
-    type: String,
-    default: '取消',
   },
   labelWidth: {
     type: String,
@@ -42,12 +38,24 @@ export const proDialogFormProps = buildProps({
     type: definePropType<'large' | 'default' | 'small'>(String),
     default: () => 'default',
   },
+  okText: {
+    type: String,
+    default: '确认',
+  },
+  cancelText: {
+    type: String,
+    default: '取消',
+  },
   submit: {
     type: definePropType<ProDialogFormSubmitFn>(Function),
     default: undefined,
   },
   proDialogProps: {
     type: definePropType<ProDialogProps | Record<string, any>>(Object),
+    required: false,
+  },
+  formProps: {
+    type: definePropType<FormProps | Record<string, any>>(Object),
     required: false,
   },
 })

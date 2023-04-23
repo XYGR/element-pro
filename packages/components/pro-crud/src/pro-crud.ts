@@ -85,10 +85,10 @@ export const proCrudProps = buildProps({
     default: () => ['create', 'update', 'delete'],
   },
   proTableProps: {
-    type: definePropType<ProTableProps>(Object),
+    type: definePropType<ProTableProps | Record<string, any>>(Object),
   },
   proDialogFormProps: {
-    type: definePropType<ProDialogFormProps>(Object),
+    type: definePropType<ProDialogFormProps | Record<string, any>>(Object),
   },
 })
 
