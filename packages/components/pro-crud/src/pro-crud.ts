@@ -18,7 +18,7 @@ export type ProCrudWriteColumn = {
   valueType:
     | 'string'
     | 'number'
-    | 'enmu'
+    | 'enum'
     | 'date'
     | 'daterange'
     | 'datetime'

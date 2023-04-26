@@ -79,7 +79,7 @@
             "
           />
           <el-select
-            v-else-if="item.valueType === 'enmu'"
+            v-else-if="item.valueType === 'enum'"
             v-model="model[item.dataIndex]"
             :clearable="true"
             :filterable="true"
@@ -249,6 +249,7 @@ export default defineComponent({
                 props.deleteRequest &&
                   (await props.deleteRequest({
                     [props.rowKey]: row[props.rowKey],
+                    ...props.extParams,
                   }))
                 done()
                 instance.confirmButtonLoading = false
