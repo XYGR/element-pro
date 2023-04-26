@@ -4,6 +4,7 @@
     :class="{
       'el-pro-dialog--without-header': !withHeader,
     }"
+    :width="width"
     :show-close="false"
     :close-on-click-modal="false"
     v-bind="{ ...dialogProps }"

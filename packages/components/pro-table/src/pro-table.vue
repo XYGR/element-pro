@@ -255,7 +255,7 @@ import { ElTable, ElTableColumn } from '@element-plus/components/table'
 import { ElPagination } from '@element-plus/components/pagination'
 import { ElButton } from '@element-plus/components/button'
 import { ArrowDown, ArrowUp, Operation } from '@element-plus/icons-vue'
-import { proTableEmits, proTableProps } from './pro-table'
+import { proTableProps } from './pro-table'
 import type { Ref } from 'vue'
 
 export default defineComponent({
@@ -282,7 +282,7 @@ export default defineComponent({
     Operation,
   },
   props: proTableProps,
-  emits: proTableEmits,
+  emits: ['row-click', 'reset'],
   setup(props, { emit }) {
     const model = reactive<Record<string, any>>({})
     const formLayout = reactive<{
