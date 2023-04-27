@@ -10,7 +10,6 @@
     v-bind="{ ...dialogProps }"
     :model-value="modelValue"
     @opened="$emit('opened')"
-    @closed="$emit('closed')"
     @before-close="beforeClose"
   >
     <template v-if="withHeader" #header>
@@ -55,6 +54,7 @@ export default defineComponent({
   emits: proDialogEmits,
   setup(props, { emit }) {
     const handlerClosed = () => {
+      emit('closed')
       emit('update:modelValue', false)
     }
 
