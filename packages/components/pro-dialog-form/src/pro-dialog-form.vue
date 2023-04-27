@@ -22,7 +22,12 @@
       <slot name="form" :model="formModel" />
     </el-form>
     <template #footer>
-      <slot v-if="$slots.footer" name="footer" />
+      <slot
+        v-if="$slots.footer"
+        name="footer"
+        :submit="handlerSubmit"
+        :cancel="handlerCancel"
+      />
       <div v-else class="el-dialog-form-footer">
         <el-button type="danger" plain :size="size" @click="handlerCancel">
           {{ cancelText }}
