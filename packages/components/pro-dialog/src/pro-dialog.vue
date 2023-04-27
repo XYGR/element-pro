@@ -10,6 +10,7 @@
     v-bind="{ ...dialogProps }"
     :model-value="modelValue"
     @opened="$emit('opened')"
+    @closed="handlerClosed"
     @before-close="beforeClose"
   >
     <template v-if="withHeader" #header>
@@ -20,7 +21,7 @@
       <button
         v-if="showClose"
         class="el-drawer__close-btn"
-        @click="handlerClosed"
+        @click="$emit('update:modelValue', false)"
       >
         <el-icon>
           <Close />
