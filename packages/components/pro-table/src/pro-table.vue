@@ -139,8 +139,9 @@
           </el-dropdown>
         </div>
       </div>
+      <slot name="custom-table" :size="resizeVal" />
       <el-table
-        v-if="!$slots.customTable"
+        v-if="!$slots['custom-table']"
         ref="tableRef"
         :data="tableData"
         :row-key="rowKey"
