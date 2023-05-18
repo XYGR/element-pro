@@ -272,8 +272,6 @@ export default defineComponent({
       proTableRef.value.load()
     }
 
-    expose({ load })
-
     return {
       proTableRef,
       slotKeys,
@@ -283,6 +281,7 @@ export default defineComponent({
       formModel,
       formMethod,
       extColumn,
+      load,
       beforeCreate,
       handlerClosed,
       beforeRead,
