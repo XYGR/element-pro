@@ -8,7 +8,7 @@
       :row-key="rowKey"
     >
       <template v-for="key in readSlots" :key="key" #[key]="target">
-        <slot :name="'read-' + key" :attr="{ ...target }" />
+        <slot :name="'read-' + key" v-bind="{ ...target }" />
       </template>
       <template #toolbar-right="{ size }">
         <slot name="toolbar-right" :attr="{ size }" />
@@ -21,8 +21,8 @@
           新增
         </el-button>
       </template>
-      <template #column-optional="{ row, column, $index }">
-        <slot name="write-column-optional" :attr="{ row, column, $index }" />
+      <template #column-optional="{ row, column, index }">
+        <slot name="write-column-optional" v-bind="{ row, column, index }" />
         <el-button
           v-if="withMenu.includes('update')"
           type="primary"
@@ -151,7 +151,7 @@ export default defineComponent({
   },
   props: proCrudProps,
   emits: proCrudEmits,
-  setup(props, { slots, emit, expose }) {
+  setup(props, { slots, emit }) {
     const proTableRef = ref()
     const slotKeys = ref(Object.keys(slots))
     const readSlots = computed(() => {

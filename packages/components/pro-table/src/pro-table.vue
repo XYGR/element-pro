@@ -184,7 +184,7 @@
                 :name="'column-' + item.dataIndex"
                 :row="row"
                 :column="column"
-                :[$index]="$index"
+                :index="$index"
               />
             </template>
           </el-table-column>
