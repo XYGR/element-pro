@@ -11,7 +11,7 @@
         <slot :name="'read-' + key" v-bind="{ ...target }" />
       </template>
       <template #toolbar-right="{ size }">
-        <slot name="toolbar-right" :attr="{ size }" />
+        <slot name="toolbar-right" v-bind="{ size }" />
         <el-button
           v-if="withMenu.includes('create')"
           type="primary"
@@ -113,7 +113,7 @@
           <slot
             v-else-if="item.valueType === 'slot'"
             :name="'write-form-' + item.dataIndex"
-            :attr="{ model, item, method: formMethod }"
+            v-bind="{ model, item, method: formMethod }"
           />
         </el-form-item>
       </template>
